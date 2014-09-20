@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  .container
+    form#new-location-form.form-horizontal(role="form")
+      .form-group
+        .col-md-6.col-md-offset-3
+          h1 New Location Entry Form
+      .form-group
+        label.col-md-3.control-label(for="name") Name
+        .col-md-6
+          input.form-control(type="text", name="name", placeholder="e.g. Tom's Taiji Place")
+      .form-group
+        label.col-md-3.control-label(for="country") Country
+        .col-md-6
+          input.form-control(type="text", name="country", placeholder="e.g. Australia")
+      .form-group
+        label.col-md-3.control-label(for="state") State
+        .col-md-6
+          input.form-control(type="text", name="state", placeholder="e.g. WA")
+      .form-group
+        label.col-md-3.control-label(for="city") City
+        .col-md-6
+          input.form-control(type="text", name="city", placeholder="e.g. Perth")
+      .form-group
+        label.col-md-3.control-label(for="street") Number/Street
+        .col-md-6
+          input.form-control(type="text", name="street", placeholder="e.g. 123 Fake St")
+      .form-group
+        label.col-md-3.control-label(for="postcode") Postcode
+        .col-md-6
+          input.form-control(type="number", name="postcode", placeholder="e.g. 6000")
+      .form-group
+        label.col-md-3.control-label(for="phone") Phone Number
+        .col-md-6
+          input.form-control(type="number", name="phone", placeholder="e.g. 9300 0001")
+      .form-group
+        label.col-md-3.control-label(for="email") Email
+        .col-md-6
+          input.form-control(type="email", name="email", placeholder="e.g. tom@tomstaiji.com.au")
+      .form-group
+        label.col-md-3.control-label(for="website") Website
+        .col-md-6
+          input.form-control(type="url", name="website", placeholder="e.g. http://tomstaiji.com.au")
+      .form-group
+        label.col-md-3.control-label(for="facebook") Facebook
+        .col-md-6
+          input.form-control(type="url", name="facebook", placeholder="e.g. http://facebook.com/tomstaiji")
+      .form-group
+        label.col-md-3.control-label(for="twitter") Twitter
+        .col-md-6
+          input.form-control(type="url", name="twitter", placeholder="e.g. http://twitter.com/tomstaiji")
+      .form-group
+        .col-md-6.col-md-offset-3
+          button.btn.btn-success(type="submit") Submit New Location
+
+block append scripts
+    script(src="/form.js")
