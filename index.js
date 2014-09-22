@@ -2,7 +2,7 @@
 
 var express    = require('express');
 var bodyParser = require('body-parser');
-var logger     = require('morgan');
+var morgan     = require('morgan');
 var cradle     = require('cradle');
 
 var db = new(cradle.Connection)(process.env.COUCH_URL || '127.0.0.1:5984').database('locations');
@@ -15,15 +15,16 @@ var saveNewLoc = function(postedData) {
   console.log('POST data:', postedData);
 
   db.save(postedData, function(err, res) {
-    if (err) { console.log('Error saving to database'); } 
-    else { console.log('database response:', res); }
+    if (err) { 
+      console.log('Error saving to database');
+    } else { console.log('database response:', res); }
   });
 };
 
 app.set('views', './views');
 app.set('view engine', 'jade');
 
-app.use(logger('common'));
+app.use(morgan('common'));
 app.use(express.static(__dirname + '/public'));
 
 app.use(function(err, req, res, next) {
@@ -43,8 +44,16 @@ app.get('/map', function(req, res) {
   res.render('map');
 });
 app.get('/list', function(req, res) {
-  db.view('locations/all', function(err, data) {
-    res.render('list', { locations: data });
+//  db.view('locations/all', function(err, data) {
+//    res.render('list', { locations: data });
+//  });
+  db.temporaryView({
+    map: function(doc) {
+      if (doc.name) { emit(doc.name, doc); }
+    }
+  }, function(err, data) {
+    if (err) { console.log(err); }
+    else { res.render('list', { locations: data }); }
   });
 });
 app.get('/new', function(req, res) {
