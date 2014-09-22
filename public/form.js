@@ -1,8 +1,8 @@
-$('#new-location-form').submit(function(e) {
+$('#new-loc-form').submit(function(e) {
 
   e.preventDefault();
 
-  var formData = $('#new-location-form').serialize();
+  var formData = $('#new-loc-form').serialize();
 
   $.ajax({
     type: 'POST',
