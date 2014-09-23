@@ -4,62 +4,82 @@ var express    = require('express');
 var bodyParser = require('body-parser');
 var morgan     = require('morgan');
 var cradle     = require('cradle');
+var bunyan     = require('bunyan');
 
-var db = new(cradle.Connection)(process.env.COUCH_URL || '127.0.0.1:5984').database('locations');
+var config = {
+  couchURL : process.env.COUCH_URL || '127.0.0.1:5984',
+  port: process.env.PORT || 3000   
+};
+
+var db = new(cradle.Connection)(config.couchURL).database('locations');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+var log = bunyan.createLogger({ name: 'taiji' });
 
 var app = express();
-
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-var saveNewLoc = function(postedData) {
-  console.log('POST data:', postedData);
-
-  db.save(postedData, function(err, res) {
-    if (err) { 
-      console.log('Error saving to database');
-    } else { console.log('database response:', res); }
-  });
-};
 
 app.set('views', './views');
 app.set('view engine', 'jade');
 
 app.use(morgan('common'));
 app.use(express.static(__dirname + '/public'));
-
 app.use(function(err, req, res, next) {
   console.error(err.stack);
-  res.status(500).send('Something is broken... Oops!');
+  res.status(500).send(err.stack);
 });
 
-app.post('/new', urlencodedParser, function(req, res) {
-  if (!req.body) { res.sendStatus(400); }
-  else { saveNewLoc(req.body); }
+app.post('/api/locations', urlencodedParser, function(req, res) {
+  if (!req.body) {
+    res.sendStatus(400);
+  } else {
+    log.info(req.body);
+
+    db.save(req.body, function(dbError, dbRes) {
+      if (dbError) { 
+        log.error(dbError);
+        res.send(dbError);
+      } else {
+        log.info(dbRes);
+        res.send(dbRes);
+      }
+    });
+  }
+});
+
+app.get('/api/locations', function(req, res) {
+  // get all locations from db view
+  // send response with json object
 });
 
 app.get('/', function(req, res) {
   res.render('home');
 });
+
 app.get('/map', function(req, res) {
   res.render('map');
 });
+
 app.get('/list', function(req, res) {
-//  db.view('locations/all', function(err, data) {
-//    res.render('list', { locations: data });
-//  });
   db.temporaryView({
     map: function(doc) {
-      if (doc.name) { emit(doc.name, doc); }
+      if (doc.name) {
+        emit(doc.name, doc);
+      }
     }
   }, function(err, data) {
-    if (err) { console.log(err); }
-    else { res.render('list', { locations: data }); }
+    if (err) {
+      log.error(err);
+    } else {
+      res.render('list', {
+        locations: data 
+      });
+    }
   });
 });
+
 app.get('/new', function(req, res) {
   res.render('new');
 });
 
-app.listen(process.env.PORT || 3000, function() {
-  console.log('Server running...');
+app.listen(config.port, function() {
+  log.info('Server running on port', config.port);
 });

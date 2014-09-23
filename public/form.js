@@ -1,15 +1,24 @@
-$('#new-loc-form').submit(function(e) {
+$('#new-loc-form').submit(function(event) {
+  event.preventDefault();
 
-  e.preventDefault();
+  $('#loc-submit').toggleClass('disabled').html('Loading...');
 
-  var formData = $('#new-loc-form').serialize();
+  var $form = $(this);
+  var posting = $.post('/api/locations', $form.serialize()); 
 
-  $.ajax({
-    type: 'POST',
-    url: '/new',
-    data: formData,
-  }).done(function(msg) {
-    console.log('sent data:', formData);
+  posting.fail(function(jqXHR, textStatus) {
+    alert('Submission failed: ', textStatus);
+    $('#loc-submit').toggleClass('disabled').html('Try Submitting Again');
+  });
+
+  posting.success(function(data) {
+    if (data.ok = true) {
+      alert('Submission successful!');
+      window.location.replace('/new');
+    } else {
+      alert('Submission failed: ', data);
+      $('#loc-submit').toggleClass('disabled').html('Try Submitting Again');
+    }
   });
 
 });

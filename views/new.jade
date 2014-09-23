@@ -11,6 +11,33 @@ block content
         .col-md-6
           input.form-control(type="text", name="name", placeholder="e.g. Tom's Taiji Place")
       .form-group
+        label.col-md-3.control-label(for="categories") Categories
+        .col-md-6
+          .checkbox
+            label
+              input(type="checkbox" value="" name="quan-checked")
+              span Taiji Quan (traditional Taiji)
+          .checkbox
+            label
+              input(type="checkbox" value="" name="fitness-checked")
+              span Fitness and Excercise (contemporary Taiji)
+          .checkbox
+            label
+              input(type="checkbox" value="" name="health-checked")
+              span Health, Traditional Chinese Medicine
+          .checkbox
+            label
+              input(type="checkbox" value="" name="arts-checked")
+              span Arts, Calligraphy, Chinese Culture
+          .checkbox
+            label
+              input(type="checkbox" value="" name="lifestyle-checked")
+              span Lifestyle, Clothing
+          .checkbox
+            label
+              input(type="checkbox" value="" name="education-checked")
+              span Wisdom, Philosophy, Education
+      .form-group
         label.col-md-3.control-label(for="country") Country
         .col-md-6
           input.form-control(type="text", name="country", placeholder="e.g. Australia")
@@ -52,7 +79,7 @@ block content
           input.form-control(type="url", name="twitter", placeholder="e.g. http://twitter.com/tomstaiji")
       .form-group
         .col-md-6.col-md-offset-3
-          button.btn.btn-success(type="submit") Submit New Location
+          button.btn.btn-success#loc-submit(type="submit") Submit New Location
 
 block append scripts
     script(src="/form.js")
