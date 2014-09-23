@@ -1,7 +1,13 @@
 extends layout
 
+block append styles
+  link(rel="stylesheet", href="https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css")
+
 block content
-  .container
+  .container-fluid
     .row
-      .col-md-6.col-md-offset-3
-        h1 Here's where the map will go!
+      .map
+
+block append scripts
+  script(href="https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js")
+  script(href="/scripts/map.js")
