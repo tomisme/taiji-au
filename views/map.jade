@@ -1,13 +1,14 @@
 extends layout
 
 block append styles
-  link(rel="stylesheet", href="https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.css")
+  link(rel="stylesheet", href="https://api.tiles.mapbox.com/mapbox.js/v2.1.1/mapbox.css")
 
 block content
-  .container-fluid
+  .container
     .row
-      .map
+      .col-lg-12
+        #map
 
 block append scripts
-  script(href="https://api.tiles.mapbox.com/mapbox.js/v2.0.1/mapbox.js")
-  script(href="/scripts/map.js")
+  script(src="https://api.tiles.mapbox.com/mapbox.js/v2.1.1/mapbox.js")
+  script(src="/scripts/map.js")
