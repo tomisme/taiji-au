@@ -46,8 +46,15 @@ app.post('/api/locations', urlencodedParser, function(req, res) {
 });
 
 app.get('/api/locations', function(req, res) {
-  // get all locations from db view
-  // send response with json object
+  db.view('locations/all', function(dbError, dbRes) {
+    if (dbError) {
+      log.error(dbError);
+      res.send(dbError);
+    } else {
+      log.info(dbRes);
+      res.send(dbRes);
+    }
+  });
 });
 
 app.get('/', function(req, res) {
@@ -56,24 +63,6 @@ app.get('/', function(req, res) {
 
 app.get('/map', function(req, res) {
   res.render('map');
-});
-
-app.get('/list', function(req, res) {
-  db.temporaryView({
-    map: function(doc) {
-      if (doc.name) {
-        emit(doc.name, doc);
-      }
-    }
-  }, function(err, data) {
-    if (err) {
-      log.error(err);
-    } else {
-      res.render('list', {
-        locations: data 
-      });
-    }
-  });
 });
 
 app.get('/new', function(req, res) {
