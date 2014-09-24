@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var cradle = require('cradle');
 var bunyan = require('bunyan');
 var geocoder = require('node-geocoder');
+var geoJSON = require('geojson')
 
 var log = bunyan.createLogger({ name: 'taiji' });
 
@@ -14,6 +15,27 @@ var db = new(cradle.Connection)(couchURL).database('locations');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 var router = express.Router();
+
+router.get('/locations', function(req, res) {
+  db.view('locations/all', function(dbError, dbRes) {
+    if (dbError) {
+      log.error('database error', dbError);
+      res.send({ error: 'database' });
+    } else {
+      log.info('database response', dbRes);
+
+      var data = []
+      for (var i = 0; i < dbRes.length; i++) {
+        data.push(dbRes[i].value);
+      }
+
+      geoJSON.parse(data, { Point: ['latitude', 'longitude'] }, function(geojson) {
+        log.info({ source: 'geojson' }, geojson);
+        res.send(geojson);
+      });
+    }
+  });
+});
 
 router.post('/locations', urlencodedParser, function(req, res) {
   if (!req.body) {
@@ -63,18 +85,6 @@ router.post('/geoloc', urlencodedParser, function(req, res) {
       }
     });
   }
-});
-
-router.get('/locations', function(req, res) {
-  db.view('locations/all', function(dbError, dbRes) {
-    if (dbError) {
-      log.error('database error', dbError);
-      res.send(dbError);
-    } else {
-      log.info('database response', dbRes);
-      res.send(dbRes);
-    }
-  });
 });
 
 module.exports = router;
