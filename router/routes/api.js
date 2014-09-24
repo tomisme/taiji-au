@@ -1,9 +1,10 @@
 'use strict';
 
-var express    = require('express');
+var express = require('express');
 var bodyParser = require('body-parser');
-var cradle     = require('cradle');
-var bunyan     = require('bunyan');
+var cradle = require('cradle');
+var bunyan = require('bunyan');
+var geocoder = require('node-geocoder');
 
 var log = bunyan.createLogger({ name: 'taiji' });
 
@@ -18,15 +19,47 @@ router.post('/locations', urlencodedParser, function(req, res) {
   if (!req.body) {
     res.sendStatus(400);
   } else {
-    log.info({ source: 'POST body' }, req.body);
+    var data = req.body;
 
-    db.save(req.body, function(dbError, dbRes) {
+    log.info({ source: 'POST body' }, data);
+    
+    db.save(data, function(dbError, dbRes) {
       if (dbError) { 
         log.error({ source: 'database' }, dbError);
-        res.send(dbError);
+        res.send({ error: 'database' });
       } else {
         log.info({ source: 'database' }, dbRes);
-        res.send(dbRes);
+        res.send({ success: true });
+      }
+    });
+  }
+});
+
+
+router.post('/geoloc', urlencodedParser, function(req, res) {
+  if (!req.body) {
+    res.sendStatus(400);
+  } else {
+    var data = req.body;
+
+    log.info({ source: 'POST body' }, data);
+
+    var addr = [data.street, data.city, data.state, data.postcode, data.country].join(', ');
+
+    var geoConfig = {
+      apiKey: process.env.GOOGLE_GEO_API_KEY,
+      formatter: null
+    };
+
+    var geocoder = require('node-geocoder').getGeocoder('google', 'https', geoConfig);
+
+    geocoder.geocode(addr, function(geoErr, geoRes) {
+      if (geoErr) { 
+        log.error(geoErr)
+        res.send({ error: 'geocoder' });
+      } else { 
+        log.info({ source: 'geocoder' }, geoRes);
+        res.send(geoRes);
       }
     });
   }

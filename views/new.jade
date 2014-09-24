@@ -2,81 +2,93 @@ extends layout
 
 block content
   .container
-    form#new-loc-form.form-horizontal(role="form")
-      .form-group
-        label.col-md-3.control-label(for="name") Name
-        .col-md-6
-          input.form-control(type="text", name="name", placeholder="e.g. Tom's Taiji Place")
-      .form-group
-        label.col-md-3.control-label(for="categories") Categories
-        .col-md-6
-          .checkbox
-            label
-              input(type="checkbox" value="" name="quan-checked")
-              span Taiji Quan (traditional Taiji)
-          .checkbox
-            label
-              input(type="checkbox" value="" name="fitness-checked")
-              span Fitness and Excercise (contemporary Taiji)
-          .checkbox
-            label
-              input(type="checkbox" value="" name="health-checked")
-              span Health, Traditional Chinese Medicine
-          .checkbox
-            label
-              input(type="checkbox" value="" name="arts-checked")
-              span Arts, Calligraphy, Chinese Culture
-          .checkbox
-            label
-              input(type="checkbox" value="" name="lifestyle-checked")
-              span Lifestyle, Clothing
-          .checkbox
-            label
-              input(type="checkbox" value="" name="education-checked")
-              span Wisdom, Philosophy, Education
-      .form-group
-        label.col-md-3.control-label(for="country") Country
-        .col-md-6
-          input.form-control(type="text", name="country", placeholder="e.g. Australia")
-      .form-group
-        label.col-md-3.control-label(for="state") State
-        .col-md-6
-          input.form-control(type="text", name="state", placeholder="e.g. WA")
-      .form-group
-        label.col-md-3.control-label(for="city") City
-        .col-md-6
-          input.form-control(type="text", name="city", placeholder="e.g. Perth")
-      .form-group
-        label.col-md-3.control-label(for="street") Number/Street
-        .col-md-6
-          input.form-control(type="text", name="street", placeholder="e.g. 123 Fake St")
-      .form-group
-        label.col-md-3.control-label(for="postcode") Postcode
-        .col-md-6
-          input.form-control(type="number", name="postcode", placeholder="e.g. 6000")
-      .form-group
-        label.col-md-3.control-label(for="phone") Phone Number
-        .col-md-6
-          input.form-control(type="number", name="phone", placeholder="e.g. 9300 0001")
-      .form-group
-        label.col-md-3.control-label(for="email") Email
-        .col-md-6
-          input.form-control(type="email", name="email", placeholder="e.g. tom@tomstaiji.com.au")
-      .form-group
-        label.col-md-3.control-label(for="website") Website
-        .col-md-6
-          input.form-control(type="url", name="website", placeholder="e.g. http://tomstaiji.com.au")
-      .form-group
-        label.col-md-3.control-label(for="facebook") Facebook
-        .col-md-6
-          input.form-control(type="url", name="facebook", placeholder="e.g. http://facebook.com/tomstaiji")
-      .form-group
-        label.col-md-3.control-label(for="twitter") Twitter
-        .col-md-6
-          input.form-control(type="url", name="twitter", placeholder="e.g. http://twitter.com/tomstaiji")
-      .form-group
-        .col-md-6.col-md-offset-3
-          button.btn.btn-success#loc-submit(type="submit") Submit New Location
+    .row
+
+      .col-md-6
+        form#geoloc-form.form-horizontal(role="form")
+          .form-group
+            label.col-md-4.control-label(for="country") Country
+            .col-md-8
+              input.form-control(type="text", name="country", placeholder="e.g. Australia")
+          .form-group
+            label.col-md-4.control-label(for="state") State
+            .col-md-8
+              input.form-control(type="text", name="state", placeholder="e.g. WA")
+          .form-group
+            label.col-md-4.control-label(for="city") City/Suburb
+            .col-md-8
+              input.form-control(type="text", name="city", placeholder="e.g. North Perth")
+          .form-group
+            label.col-md-4.control-label(for="street") Number/Street
+            .col-md-8
+              input.form-control(type="text", name="street", placeholder="e.g. 123 Fake St")
+          .form-group
+            label.col-md-4.control-label(for="postcode") Postcode
+            .col-md-8
+              input.form-control(type="text", name="postcode", placeholder="e.g. 6000")
+          .form-group
+            .col-md-8.col-md-offset-4
+              button.btn.btn-success#geoloc-submit(type="submit") Search
+        .row
+          .col-md-8.col-md-offset-4
+            div#geoloc-results
+
+      .col-md-6
+        form#new-loc-form.form-horizontal(role="form")
+          .form-group
+            label.col-md-4.control-label(for="name") Name
+            .col-md-8
+              input.form-control(type="text", name="name", placeholder="e.g. Tom's Taiji Place")
+          .form-group
+            label.col-md-4.control-label(for="categories") Categories
+            .col-md-8
+              .checkbox
+                label
+                  input(type="checkbox" value="" name="quan-checked")
+                  span Taiji Quan (traditional Taiji)
+              .checkbox
+                label
+                  input(type="checkbox" value="" name="fitness-checked")
+                  span Fitness and Excercise (contemporary Taiji)
+              .checkbox
+                label
+                  input(type="checkbox" value="" name="health-checked")
+                  span Health, Traditional Chinese Medicine
+              .checkbox
+                label
+                  input(type="checkbox" value="" name="arts-checked")
+                  span Arts, Calligraphy, Chinese Culture
+              .checkbox
+                label
+                  input(type="checkbox" value="" name="lifestyle-checked")
+                  span Lifestyle, Clothing
+              .checkbox
+                label
+                  input(type="checkbox" value="" name="education-checked")
+                  span Wisdom, Philosophy, Education
+          .form-group
+            label.col-md-4.control-label(for="phone") Phone Number
+            .col-md-8
+              input.form-control(type="text", name="phone", placeholder="e.g. 9300 0001")
+          .form-group
+            label.col-md-4.control-label(for="email") Email
+            .col-md-8
+              input.form-control(type="email", name="email", placeholder="e.g. tom@tomstaiji.com.au")
+          .form-group
+            label.col-md-4.control-label(for="website") Website
+            .col-md-8
+              input.form-control(type="url", name="website", placeholder="e.g. http://tomstaiji.com.au")
+          .form-group
+            label.col-md-4.control-label(for="facebook") Facebook
+            .col-md-8
+              input.form-control(type="url", name="facebook", placeholder="e.g. http://facebook.com/tomstaiji")
+          .form-group
+            label.col-md-4.control-label(for="twitter") Twitter
+            .col-md-8
+              input.form-control(type="url", name="twitter", placeholder="e.g. http://twitter.com/tomstaiji")
+          .form-group
+            .col-md-8.col-md-offset-4
+              button.btn.btn-success#new-loc-submit(type="submit") Submit New Location
 
 block append scripts
     script(src="/scripts/form.js")
