@@ -1,14 +1,16 @@
 extends layout
 
 block append styles
-  link(rel="stylesheet", href="https://api.tiles.mapbox.com/mapbox.js/v2.1.1/mapbox.css")
+  link(rel="stylesheet", href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
 
 block content
   .container
     .row
-      .col-lg-12
-        #map
+      .col-lg-8
+        #map(style="height: 500px")
+      .col-lg-4
+        #results
 
 block append scripts
-  script(src="https://api.tiles.mapbox.com/mapbox.js/v2.1.1/mapbox.js")
+  script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
   script(src="/scripts/map.js")

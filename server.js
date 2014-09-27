@@ -7,8 +7,7 @@ var cradle     = require('cradle');
 var bunyan     = require('bunyan');
 
 var log = bunyan.createLogger({ name: 'taiji' });
-var port = process.env.PORT || 3000   
-var router;
+var port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -17,9 +16,9 @@ app.set('view engine', 'jade');
 
 app.use(morgan('common'));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/client'));
 
-router = require('./router')(app);
+var router = require('./router')(app);
 
 app.use(function(err, req, res, next) {
   log.error(err);
