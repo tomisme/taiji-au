@@ -2,7 +2,14 @@ var cradle = require('cradle');
 var cutils = require('couchdb-utils');
 
 var connection = new(cradle.Connection)(process.env.COUCH_URL || '127.0.0.1:5984');
+
 var db = connection.database('locations');
+
+db.createIfNotExists(function(err, existed) {
+  if (err) console.log(err);
+  if (!err && !existed) console.log('Location database successfully created');
+});
+
 var design = new cutils.Design(db, 'locations', '0.0.4');
 
 design.view('all', {
