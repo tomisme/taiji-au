@@ -44,32 +44,36 @@ block content
             .col-md-8
               .checkbox
                 label
-                  input(type="checkbox" value="" name="quan-checked")
+                  input(type="checkbox" value="quan" name="categories[]")
                   span Taiji Quan (traditional Taiji)
               .checkbox
                 label
-                  input(type="checkbox" value="" name="fitness-checked")
+                  input(type="checkbox" value="fitness" name="categories[]")
                   span Fitness and Excercise (contemporary Taiji)
               .checkbox
                 label
-                  input(type="checkbox" value="" name="health-checked")
+                  input(type="checkbox" value="health" name="categories[]")
                   span Health, Traditional Chinese Medicine
               .checkbox
                 label
-                  input(type="checkbox" value="" name="arts-checked")
+                  input(type="checkbox" value="arts" name="categories[]")
                   span Arts, Calligraphy, Chinese Culture
               .checkbox
                 label
-                  input(type="checkbox" value="" name="lifestyle-checked")
+                  input(type="checkbox" value="lifestyle" name="categories[]")
                   span Lifestyle, Clothing
               .checkbox
                 label
-                  input(type="checkbox" value="" name="education-checked")
+                  input(type="checkbox" value="education" name="categories[]")
                   span Wisdom, Philosophy, Education
           .form-group
-            label.col-md-4.control-label(for="phone") Phone Number
+            label.col-md-4.control-label(for="phone") Landline Number
             .col-md-8
               input.form-control(type="text", name="phone", placeholder="e.g. 9300 0001")
+          .form-group
+            label.col-md-4.control-label(for="mobile") Mobile Number
+            .col-md-8
+              input.form-control(type="text", name="mobile", placeholder="e.g. 04305 4433")
           .form-group
             label.col-md-4.control-label(for="email") Email
             .col-md-8
@@ -91,4 +95,5 @@ block content
               button.btn.btn-success#new-loc-submit(type="submit") Submit New Location
 
 block append scripts
-    script(src="/scripts/form.js")
+    script(src="scripts/lib/jquery.serialize-object.min.js")
+    script(src="scripts/new.js")

@@ -1,7 +1,8 @@
 extends layout
 
 block append styles
-  link(rel="stylesheet", href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
+  link(rel="stylesheet", href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
+  link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css")
 
 block content
   .container
@@ -12,5 +13,6 @@ block content
         #results
 
 block append scripts
-  script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
+  script(src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js")
   script(src="/scripts/map.js")
