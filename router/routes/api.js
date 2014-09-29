@@ -33,9 +33,9 @@ router.get('/locations', function(req, res) {
 });
 
 router.post('/locations/update', urlencodedParser, function(req, res) {
-  console.dir(req.body);
+  log.info({ source: 'POST request body' }, req.body);
   var id = req.body.pk;
-  var value = req.body.value;
+  var value = req.body.value || req.body['value[]'];
   var target = req.body.name;
 
   var updateObj = {};
@@ -45,16 +45,15 @@ router.post('/locations/update', urlencodedParser, function(req, res) {
 
   db.get(id, function(getErr, doc) {
     if (getErr) {
-      res.send(400).send({ error: 'database' });
+      res.status(400).send({ error: 'database' });
       log.error('database error', getErr);
     } else {
       db.merge(id, updateObj, function(updateErr, dbRes) {
         if (updateErr) {
-          res.send(400).send({ error: 'database' });
+          res.status(400).send({ error: 'database' });
           log.error('database error', delErr);
         } else {
-          res.send(200);
-          console.log('hello!');
+          res.status(200).end();
         }
       });
     }

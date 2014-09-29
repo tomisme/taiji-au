@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var map = L.map('map').setView([-31.95, 115.85], 12);
+  var map = L.map('map').setView([-31.95, 115.85], 10);
 
   L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
     maxZoom: 18,
@@ -15,16 +15,21 @@ $(document).ready(function() {
     var html = '';
     html += "<ul class='list-group'>";
     html += "<li class='list-group-item'><i class='fa fa-map-marker fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-name'>" + loc.name + "</a></li>";
-    html += "<li class='list-group-item'><i class='fa fa-phone fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-phone'>" + loc.phone + "</li>";
-    html += "<li class='list-group-item'><i class='fa fa-mobile fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-mobile'>" + loc.mobile + "</li>";
+    html += "<li class='list-group-item'><i class='fa fa-phone fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-phone'>" + loc.phone + "</a></li>";
+    html += "<li class='list-group-item'><i class='fa fa-mobile fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-mobile'>" + loc.mobile + "</a></li>";
     html += "<li class='list-group-item'><i class='fa fa-envelope fa-fw'></i>&nbsp;&nbsp;<a href='mailto:" + loc.email + "' id='edit-email'>" + loc.email + "</a></li>";
     html += "<li class='list-group-item'><i class='fa fa-globe fa-fw'></i>&nbsp;&nbsp;<a href='" + loc.website + "' id='edit-website'>" + loc.website + "</a></li>"; 
     html += "<li class='list-group-item'><i class='fa fa-facebook fa-fw'></i>&nbsp;&nbsp;<a href='" + loc.facebook + "' id='edit-facebook'>" + loc.facebook + "</a></li>"; 
     html += "<li class='list-group-item'><i class='fa fa-twitter fa-fw'></i>&nbsp;&nbsp;<a href='" + loc.twitter + "' id='edit-twitter'>" + loc.twitter + "</a></li>"; 
     html += "<li class='list-group-item'>"; 
+    html += "<h4 class='list-group-item-heading'>Address</h4>";
     html += "<p class='list-group-item-text'>" + loc.streetNumber + " " + loc.streetName + "</p>";
     html += "<p class='list-group-item-text'>" + loc.city + "</p>";
     html += "<p class='list-group-item-text'>" + loc.stateCode + ", " + loc.zipcode +  "</p>";
+    html += "</li>";
+    html += "<li class='list-group-item'>"; 
+    html += "<h4 class='list-group-item-heading'>Categories</h4>";
+    html += "<p class='list-group-item-text'><a href='#' id='edit-categories'></a></p>";
     html += "</li>";
     html += "<li class='list-group-item'>"; 
     html += "<div class='btn-group'>";
@@ -34,6 +39,23 @@ $(document).ready(function() {
     html += "</ul>";
     $('#results').html(html);
 
+    $('#edit-categories').editable({
+      name: 'categories',
+      type: 'checklist',
+      pk: loc._id,
+      url: '/api/locations/update',
+      title: 'Select Categories:',
+      value: loc.categories,
+      source: [
+        { value: 'quan', text: 'Taiji Quan (traditional Taiji)' },
+        { value: 'fitness', text: 'Fitness and Excercise (contemporary Taiji)' },
+        { value: 'health', text: 'Health, Traditional Chinese Medicine' },
+        { value: 'arts', text: 'Arts, Calligraphy, Chinese Culture' },
+        { value: 'lifestyle', text: 'Lifestyle, Clothing' },
+        { value: 'education', text: 'Wisdom, Philosophy, Education' }
+      ]
+    });
+            
     $('#edit-name').editable({
       name: 'name',
       type: 'text',

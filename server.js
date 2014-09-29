@@ -1,9 +1,7 @@
 'use strict';
 
 var express    = require('express');
-var bodyParser = require('body-parser');
 var morgan     = require('morgan');
-var cradle     = require('cradle');
 var bunyan     = require('bunyan');
 
 var log = bunyan.createLogger({ name: 'taiji' });
@@ -21,8 +19,8 @@ app.use(express.static(__dirname + '/client'));
 var router = require('./router')(app);
 
 app.use(function(err, req, res, next) {
-  log.error(err);
-  res.status(err.status || 500);
+  log.error({ source: 'express error' }, err);
+  res.status(err.status || 500).end();
 });
 
 app.listen(port, function() {

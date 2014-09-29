@@ -11,11 +11,12 @@ html(lang="en")
     title Taiji Cloud - Admin
   body
     block nav
-      .container
-        .nav(role="navigation").navbar.navbar-default
+      .nav(role="navigation").navbar.navbar-default
+        .container
           .navbar-header
             a(href="/").navbar-brand Admin
             ul.nav.navbar-nav
+              li: a(href="/") Dashboard
               li: a(href="/map") Map
               li: a(href="/new") Add New Location
     block content
