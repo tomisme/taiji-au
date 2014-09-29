@@ -12,8 +12,15 @@ block content
       .col-lg-4
         #results
           .panel.panel-default
-            .panel-body Click on a map marker to see more information about the location or edit its database entry.
-
+            .panel-body
+              .p Click on a map marker to see more information about the location or edit its database entry.
+          .panel.panel-default
+            .panel-body
+              .p All data can be edited except addresses. To change a location's postion/address it will need to be resubmitted and the old one deleted.
+          .panel.panel-default
+            .panel-body
+              .p Changes made locations are applied immidiately to the database but this page will need to be refreshed before the changes appear.
+        
 block append scripts
   script(src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js")

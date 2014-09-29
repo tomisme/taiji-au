@@ -3,8 +3,12 @@ extends layout
 block content
   .container
     .row
-
       .col-md-6
+        .row
+          .col-md-12
+            .panel.panel-default
+              .panel-heading Step 1
+              .panel-body Enter some address data below (you do not need to fill in all of the information) and select one of the search results.
         form#geoloc-form.form-horizontal(role="form")
           .form-group
             label.col-md-4.control-label(for="country") Country
@@ -32,8 +36,12 @@ block content
         .row
           .col-md-8.col-md-offset-4
             div#geoloc-results
-
       .col-md-6
+        .row
+          .col-md-12
+            .panel.panel-default
+              .panel-heading Step 2
+              .panel-body Fill in any additional details below and submit the location to the database.
         form#new-loc-form.form-horizontal(role="form")
           .form-group
             label.col-md-4.control-label(for="name") Name
