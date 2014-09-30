@@ -4,18 +4,17 @@ var express = require('express');
 
 var router = express.Router();
 
-router.get('/', function(req, res) {
-  res.render('dash');
+router.get('/admin', function(req, res) {
+  res.render('admin/dash');
 });
 
-router.get('/map', function(req, res) {
-  res.render('map');
+router.get('/admin/map', function(req, res) {
+  res.render('admin/map');
 });
 
-router.get('/new', function(req, res) {
-  res.render('new');
+router.get('/admin/new', function(req, res) {
+  res.render('admin/new');
 });
 
 module.exports = router;
-
 
