@@ -12,7 +12,7 @@ var app = express();
 app.set('views', './views');
 app.set('view engine', 'jade');
 
-app.use(morgan('common'));
+app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/client'));
 
