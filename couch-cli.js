@@ -10,10 +10,16 @@ db.createIfNotExists(function(err, existed) {
   if (!err && !existed) console.log('Location database successfully created');
 });
 
-var design = new cutils.Design(db, 'locations', '0.0.4');
+var design = new cutils.Design(db, 'locations', '0.0.9');
 
 design.view('all', {
   map: function (doc) { emit(doc._id, doc); }
+});
+
+design.view('hasAddress', {
+  map: function (doc) {
+    if (doc.hasAddress) { emit(doc._id, doc); }
+  }
 });
 
 design.end(function(err) {
@@ -21,28 +27,3 @@ design.end(function(err) {
   else console.log('All views are up to date.');
 });
 
-/*
-if (prog.create) {
-  db.exists(function (err, exists) {
-    if (err) {
-      console.log(err);
-    } else if (exists) {
-      console.log('Database already exists');
-    } else {
-      console.log('Database does not exist');
-      db.create();
-      console.log('Database created');
-    }
-  });
-}
-
-if (prog.remove) {
-  db.destroy(function(err, res) {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(res);
-    }
-  });
-}
-*/
