@@ -8,28 +8,35 @@ block content
           .col-md-12
             .panel.panel-default
               .panel-heading Step 1
-              .panel-body Enter some address data below (you do not need to fill in all of the information), click search and select one of the results.
+              .panel-body Enter some address data below (you do not need to fill in all of the information), click 'search' and select one of the results.
+              .panel-body If the location does not have a physical address, check 'online only'. You can still fill in any applicable fields below (such as country), however the location will not appear in map results.
         form#geoloc-form.form-horizontal(role="form")
+          .form-group
+            .col-md-8.col-md-offset-4
+              .checkbox
+                label
+                  input(type="checkbox" id='online-only-checkbox')
+                  span Online Only
           .form-group
             label.col-md-4.control-label(for="country") Country
             .col-md-8
-              input.form-control(type="text", name="country", placeholder="e.g. Australia")
+              input.form-control(type="text", name="country", id="country", placeholder="e.g. Australia")
           .form-group
             label.col-md-4.control-label(for="state") State
             .col-md-8
-              input.form-control(type="text", name="state", placeholder="e.g. WA")
+              input.form-control(type="text", name="state", id="state", placeholder="e.g. WA")
           .form-group
             label.col-md-4.control-label(for="city") City/Suburb
             .col-md-8
-              input.form-control(type="text", name="city", placeholder="e.g. North Perth")
+              input.form-control(type="text", name="city", id="city", placeholder="e.g. North Perth")
           .form-group
             label.col-md-4.control-label(for="street") Number/Street
             .col-md-8
-              input.form-control(type="text", name="street", placeholder="e.g. 123 Fake St")
+              input.form-control(type="text", name="street", id="street", placeholder="e.g. 123 Fake St")
           .form-group
             label.col-md-4.control-label(for="postcode") Postcode
             .col-md-8
-              input.form-control(type="text", name="postcode", placeholder="e.g. 6000")
+              input.form-control(type="text", name="postcode", id="postcode", placeholder="e.g. 6000")
           .form-group
             .col-md-8.col-md-offset-4
               button.btn.btn-success#geoloc-submit(type="submit") Search
@@ -103,5 +110,5 @@ block content
               button.btn.btn-success#new-loc-submit(type="submit") Submit New Location
 
 block append scripts
-    script(src="scripts/lib/jquery.serialize-object.min.js")
-    script(src="scripts/new.js")
+    script(src="/scripts/lib/jquery.serialize-object.min.js")
+    script(src="/scripts/new.js")

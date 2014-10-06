@@ -121,7 +121,7 @@ $(document).ready(function() {
         var id = deleteButton.attr('data-loc-id');
 
         $.ajax({
-          url: 'api/locations/' + id,
+          url: '/api/locations/' + id,
           type: 'DELETE'
         })
         .done(function(data) {
@@ -143,15 +143,50 @@ $(document).ready(function() {
     });
   }
 
+  var TaijiIcon = L.Icon.extend({
+    options: {
+      iconSize: [35, 47],
+      iconAnchor: [17, 47],
+      popupAnchor: [0, -48]
+    }
+  });
+  
+  var blueIcon = new TaijiIcon({ iconUrl: '/images/blue-marker.png' });
+  var greenIcon = new TaijiIcon({ iconUrl: '/images/green-marker.png' });
+  var greyIcon = new TaijiIcon({ iconUrl: '/images/grey-marker.png' });
+  var redIcon = new TaijiIcon({ iconUrl: '/images/red-marker.png' });
+  var yellowIcon = new TaijiIcon({ iconUrl: '/images/yellow-marker.png' });
+  var whiteIcon = new TaijiIcon({ iconUrl: '/images/white-marker.png' });
+  var multiIcon = new TaijiIcon({ iconUrl: '/images/multi-marker.png' });
 
-  $.get('api/locations/geojson', function(data) {
+  $.get('/api/locations/geojson', function(data) {
     var group = L.geoJson(data, {
+
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.name, {
           autopan: true,
           closeButton: false,
         });
+      },
+
+      pointToLayer: function (feature, latlng) {
+        if (feature.properties.categories == 'fitness') {
+          return L.marker(latlng, { icon: blueIcon });
+        } else if (feature.properties.categories == 'education') {
+          return L.marker(latlng, { icon: redIcon });
+        } else if (feature.properties.categories == 'arts') {
+          return L.marker(latlng, { icon: greenIcon });
+        } else if (feature.properties.categories == 'lifestyle') {
+          return L.marker(latlng, { icon: greyIcon });
+        } else if (feature.properties.categories == 'quan') {
+          return L.marker(latlng, { icon: whiteIcon });
+        } else if (feature.properties.categories == 'health') {
+          return L.marker(latlng, { icon: yellowIcon });
+        } else {
+          return L.marker(latlng, { icon: multiIcon });
+        }
       }
+
     });
     
     group
@@ -160,4 +195,25 @@ $(document).ready(function() {
 
   });
 
+/*
+  $.get('/api/locations/geojson', function(data) {
+
+    var locationLayer = L.geoJson(data, {
+
+      pointToLayer: function (feature, latlng) {
+        if (feature.properties.categories == 'quan') {
+          return L.marker(latlng, { icon: quanIcon });
+        }
+      }
+
+    });
+
+    // layer.bindPopup(e.properties.title);
+
+    // geojson.on('click', onMarkerClick);
+
+    map.addLayer(locationLayer);
+  });
+*/
 });
+

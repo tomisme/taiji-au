@@ -1,8 +1,20 @@
 $(document).ready(function(){
 
-  var address;
+  var address = "";
+  var hasAddress = true;
 
-  $('#geoloc-form').submit(function(event) {
+  function handleHasAddressChange(event) {
+    $('#geoloc-submit').toggleClass('disabled');
+    if ($(this).is(':checked')) {
+      hasAddress = false;
+      $('#geoloc-results').html("");
+      address = "";
+    } else {
+      hasAddress = true;
+    }
+  }
+
+  function handleGeolocSubmit(event) {
     event.preventDefault();
 
     $('#geoloc-submit').toggleClass('disabled').html('Searching...');
@@ -60,26 +72,41 @@ $(document).ready(function(){
         alert('Could not contact server, please try again later');
         $('#loc-submit').toggleClass('disabled').html('Try Submitting Again');
       });
-  });
+  }
 
-  $('#new-loc-form').submit(function(event) {
+  function handleLocSubmit(event) {
+    var locationData;
+    var details = $(this).serializeObject();
+
     event.preventDefault();
 
     $('#loc-submit').toggleClass('disabled').html('Submitting...');
 
-    if (!address) {
-      alert('Please search and select an address');
+    if (!address && hasAddress) {
+      alert("Please search and select an address or select 'Online Only'");
+      $('#loc-submit').toggleClass('disabled').html('Submit');
       return;
     }
-
-    var locationData = JSON.parse(address);
-
-    var details = $(this).serializeObject();
 
     if (!details.name) {
-      alert('Please provide a name');
+      alert('Please provide a name for the location');
+      $('#loc-submit').toggleClass('disabled').html('Submit');
       return;
     }
+
+    if (hasAddress) {
+      locationData = JSON.parse(address);
+    } else {
+      locationData = {
+        country: $('#country').val(),
+        state: $('#state').val(),
+        city: $('#city').val(),
+        street: $('#street').val(),
+        postcode: $('#postcode').val()
+      };
+    }
+
+    locationData.hasAddress = hasAddress;
 
     for (var prop in details) {
       locationData[prop] = details[prop];
@@ -89,17 +116,21 @@ $(document).ready(function(){
       .done(function(data) {
         if (data.success) {
           alert('Submission successful!');
-          window.location.replace('/new');
+          window.location.replace('/admin/new');
         } else {
           alert('There was an error with the ' + data.error);
-          $('#loc-submit').toggleClass('disabled').html('Try Submitting Again');
+          $('#loc-submit').toggleClass('disabled').html('Submit');
         }
       })
       .fail(function(jqXHR, textStatus, err) {
         console.log(err);
         alert('Submission failed with status: ', textStatus);
-        $('#loc-submit').toggleClass('disabled').html('Try Submitting Again');
+        $('#loc-submit').toggleClass('disabled').html('Try Submit');
       });
-  });
+  }
+
+  $('#online-only-checkbox').change(handleHasAddressChange);
+  $('#geoloc-form').submit(handleGeolocSubmit);
+  $('#new-loc-form').submit(handleLocSubmit);
 
 });
