@@ -47,12 +47,12 @@ $(document).ready(function() {
       title: 'Select Categories:',
       value: loc.categories,
       source: [
-        { value: 'quan', text: 'Taiji Quan (traditional Taiji)' },
-        { value: 'fitness', text: 'Fitness and Excercise (contemporary Taiji)' },
-        { value: 'health', text: 'Health, Traditional Chinese Medicine' },
-        { value: 'arts', text: 'Arts, Calligraphy, Chinese Culture' },
-        { value: 'lifestyle', text: 'Lifestyle, Clothing' },
-        { value: 'education', text: 'Wisdom, Philosophy, Education' }
+        { value: 'quan', text: 'Martial Taiji Quan' },
+        { value: 'fitness', text: 'Fitness and Excercise Taiji' },
+        { value: 'health', text: 'Health and Traditional Chinese Medicine' },
+        { value: 'arts', text: 'Arts, Calligraphy and Chinese Culture' },
+        { value: 'lifestyle', text: 'Lifestyle and Clothing' },
+        { value: 'education', text: 'Wisdom, Philosophy and Education' }
       ]
     });
             
@@ -160,60 +160,32 @@ $(document).ready(function() {
   var multiIcon = new TaijiIcon({ iconUrl: '/images/multi-marker.png' });
 
   $.get('/api/locations/geojson', function(data) {
-    var group = L.geoJson(data, {
-
+    if (data.error) {
+      console.log(data.error);
+      return;
+    }
+    var markers = L.geoJson(data, {
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.name, {
           autopan: true,
           closeButton: false,
         });
       },
-
       pointToLayer: function (feature, latlng) {
-        if (feature.properties.categories == 'fitness') {
-          return L.marker(latlng, { icon: blueIcon });
-        } else if (feature.properties.categories == 'education') {
-          return L.marker(latlng, { icon: redIcon });
-        } else if (feature.properties.categories == 'arts') {
-          return L.marker(latlng, { icon: greenIcon });
-        } else if (feature.properties.categories == 'lifestyle') {
-          return L.marker(latlng, { icon: greyIcon });
-        } else if (feature.properties.categories == 'quan') {
-          return L.marker(latlng, { icon: whiteIcon });
-        } else if (feature.properties.categories == 'health') {
-          return L.marker(latlng, { icon: yellowIcon });
-        } else {
-          return L.marker(latlng, { icon: multiIcon });
-        }
-      }
+        var cat = feature.properties.categories;
 
+        if (cat == 'fitness') { return L.marker(latlng, { icon: blueIcon }); }
+        else if (cat == 'education') { return L.marker(latlng, { icon: redIcon }); }
+        else if (cat == 'arts') { return L.marker(latlng, { icon: greenIcon }); }
+        else if (cat == 'lifestyle') { return L.marker(latlng, { icon: greyIcon }); }
+        else if (cat == 'quan') { return L.marker(latlng, { icon: whiteIcon }); }
+        else if (cat == 'health') { return L.marker(latlng, { icon: yellowIcon }); }
+        else { return L.marker(latlng, { icon: multiIcon }); }
+      }
     });
     
-    group
-      .on('click', onMarkerClick)
-      .addTo(map);
-
+    markers.on('click', onMarkerClick)
+      .addTo(map); 
   });
-
-/*
-  $.get('/api/locations/geojson', function(data) {
-
-    var locationLayer = L.geoJson(data, {
-
-      pointToLayer: function (feature, latlng) {
-        if (feature.properties.categories == 'quan') {
-          return L.marker(latlng, { icon: quanIcon });
-        }
-      }
-
-    });
-
-    // layer.bindPopup(e.properties.title);
-
-    // geojson.on('click', onMarkerClick);
-
-    map.addLayer(locationLayer);
-  });
-*/
 });
 
