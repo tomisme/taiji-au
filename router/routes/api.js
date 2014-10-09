@@ -95,9 +95,6 @@ router.get('/locations/geojson', function(req, res) {
       geoJSON.parse(data, { Point: ['latitude', 'longitude'] }, function(geojson) {
         res.send(geojson);
         log.info({ source: 'geojson' }, geojson);
-        geojson.features.forEach(function(element) {
-          log.info({ source: 'geojson' }, element.properties);
-        });
       });
     }
   });
