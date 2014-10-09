@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Roboto")
+    link(rel="stylesheet", href="/styles/style.css")
+    title Taiji Cloud
+  body
+    #nav-wrapper
+      img#main-logo(src='/images/big-logo.png')
+      ul#nav
+        li: a(href="#map")
+          i.fa.fa-fw.fa-map-marker
+          span MAP
+        li: a(href="#categories")
+          i.fa.fa-fw.fa-tags
+          span CATEGORIES
+        li: a(href="#about")
+          i.fa.fa-fw.fa-info
+          span ABOUT
+    #main-wrapper
+      #treeline-wrapper
+        img#treeline(src='/images/treeline.png')
+
+    script(src="//code.jquery.com/jquery-2.1.1.min.js")
+    script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")

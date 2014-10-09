@@ -1,0 +1,64 @@
+html, body {
+  height: 100%;
+}
+
+#nav-wrapper {
+  background: #00A8C6;
+  width: 300px;
+  height: 100%;
+  float: left;
+  display: inline-block;
+}
+
+#main-logo {
+  margin: 15px;
+  width: 270px;
+}
+
+#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#nav span {
+  margin-left: 10px;
+}
+
+#nav a {
+  display: block;
+  width: 100%;
+  padding: 0.2em 1em;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
+  background-color: #40C0CB;
+  color: White;
+  text-decoration: none;
+  float: left;
+  margin-top: 1px;
+}
+
+#nav a:hover
+{
+  background-color: #369;
+  color: #fff;
+}
+
+#main-wrapper {
+  background: url('/images/paper-tile.png') repeat;
+  height: 100%;
+  margin-left: 300px;
+  position: relative;
+  box-shadow:inset 2px 5px 20px #555;
+}
+
+#treeline-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+
+#treeline {
+  width: 100%;
+}
+
