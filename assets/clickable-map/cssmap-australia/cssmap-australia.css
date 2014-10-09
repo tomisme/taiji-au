@@ -1,0 +1,118 @@
+/* default tooltip */
+.css-map > li a,.css-map > li a:hover,#map-tooltip,.cssmap-tooltip-content{
+  background: #111;
+  background: rgba(0,0,0,.8);
+  color: #eee;
+  font: normal 14px 'Lucida Grande',Arial,sans-serif;
+  padding: .5em 1.2em;
+  text-align: center;
+  text-shadow: 0 1px 0 #000;
+  white-space: nowrap;
+  -moz-border-radius: .6em;
+  -ms-border-radius: .6em;
+  -webkit-border-radius: .6em;
+  border-radius: .6em;
+ }
+ .m500 .css-map > li a,.m340 .css-map > li a{ font-size: 12px }
+
+ /* tooltip arrow; when you change its size don't forget to set tooltipArrowHeight variable in the cssMap(); function */
+ .css-map > li a .tooltip-arrow{
+  bottom: -5px; /* must be the same as a border-width */
+  border: solid;
+  border-color: #111 transparent;
+  border-color: rgba(0,0,0,.8) transparent;
+  border-width: 5px 5px 0 5px; /* this's a height of the arrow */
+  margin-left: -5px; /* must be the same as a border-width */
+ }
+ .css-map > li a.tooltip-right .tooltip-arrow{
+   margin-right: -5px; /* must be the same as a tooltip-arrow border-width */
+  }
+ .css-map > li a.tooltip-top .tooltip-arrow{ /* set tooltip under the arrow */
+   border-width:0 5px 5px 5px;
+   top: -5px;
+  }
+
+ /* tooltip style when the region is activated */
+ .css-map .active-region a{background-color: #111}
+  .css-map .active-region a .tooltip-arrow{border-color: #111 transparent}
+
+ /* links in the visible list of regions */
+ .map-visible-list a{
+   /* color: #eee; */
+  }
+ .map-visible-list a:hover,.map-visible-list a:focus,.map-visible-list li.focus a{
+   /* color: #fc0; */
+  }
+ .map-visible-list a:active,.map-visible-list li.active-region a{
+   /* color: #cc3; */
+  }
+
+
+/* default pre-loader */
+.map-loader{
+  background: #111;
+  background: rgba(0,0,0,.8);
+  color: #eee;
+  font: normal 14px 'Lucida Grande',Arial,sans-serif;
+  padding: .6em 1.2em;
+  text-shadow: 0 1px 0 #000;
+  -moz-border-radius: .6em;
+  -ms-border-radius: .6em;
+  -webkit-border-radius: .6em;
+  border-radius: .6em;
+ }
+ .m340 .map-loader{ font-size: 12px }
+
+
+/* link to the search engine - shown in the multipleClick mode */
+.map-search-link{
+  /* your properties goes here */
+ }
+ .map-search-link:hover,a.map-search-link:focus{
+   /* selected link style */
+  }
+ .m340 .map-search-link{
+   /* style for a specific map size, ex.:
+   font-size: 1em;
+   */
+  }
+
+/* --------------------------------------------------------
+ * the maps starts here
+
+ * DO NOT EDIT!
+
+ * CSSMap plugin - Australia
+ * version: 4.4.26
+ * web: http://cssmapsplugin.com/australia-and-south-pacific/australia.html
+ * email: support@cssmapsplugin.com
+ * author: Łukasz Popardowski { Winston_Wolf }
+ * license: http://cssmapsplugin.com/license
+*/
+.css-map-container{margin:0 auto !important;overflow:hidden;padding:0 !important;position:relative} .css-map-container *{-moz-box-sizing: content-box;-webkit-box-sizing: content-box;box-sizing: content-box} .css-map{display:block;left:0;margin:0 !important;list-style:none;padding:0 !important;position:relative} .css-map > li{height:0;width:0} .css-map > li a{height:auto;margin:-9999px 0 0 0;position:absolute;text-decoration:none;width:auto;z-index:89} .css-map > li a:focus{outline:0 none} .css-map-container span{display:block;height:0;left:0;position:absolute;top:-9999px;width:0} .css-map > li a.tooltip-right{left:auto;right:0;width:auto} .css-map > li a .tooltip-arrow{left:50%;top:auto} .css-map > li a.tooltip-middle .tooltip-arrow{display:none} .css-map > li a.tooltip-top .tooltip-arrow{bottom:auto} .css-map > li a.tooltip-right .tooltip-arrow{left:auto} #map-tooltip{position:absolute;z-index:999} .css-map-container .cities{top:0;z-index:88} .css-map .bg{padding:10px} .css-map .active-region .bg{z-index:87} .css-map .m{cursor:pointer;z-index:99} .css-map .m span{z-index:89} .map-visible-list{clear:both;overflow:hidden} span.map-loader{height:auto;position:absolute;text-align:center;width:auto;z-index:90}
+
+/* really, DO NOT EDIT THIS! */
+.au1 .s1{height:.1em;left:13.9em;top:10.7em;width:.1em}.au1 .s2{height:.3em;left:13.8em;top:10.8em;width:.2em} .au2 .s1{height:.8em;left:15.5em;top:7.8em;width:.2em}.au2 .s2{height:1.6em;left:15.1em;top:7.8em;width:.4em}.au2 .s3{height:1.8em;left:15em;top:7.9em;width:.3em}.au2 .s4{height:1.9em;left:14.9em;top:8.1em;width:.2em}.au2 .s5{height:.1em;left:14.1em;top:11.7em;width:.3em}.au2 .s6{height:.4em;left:14em;top:10.7em;width:.6em}.au2 .s7{height:.1em;left:13.9em;top:11.6em;width:.5em}.au2 .s8{height:.2em;left:13.6em;top:11.4em;width:.8em}.au2 .s9{height:.3em;left:13.5em;top:11.1em;width:.9em}.au2 .s10{height:.1em;left:12.7em;top:11.1em;width:.6em}.au2 .s11{height:.1em;left:12.2em;top:11.1em;width:.2em}.au2 .s12{height:.1em;left:12.2em;top:11em;width:1.6em}.au2 .s13{height:.1em;left:12.1em;top:10.9em;width:1.7em}.au2 .s14{height:.1em;left:11.9em;top:10.8em;width:1.9em}.au2 .s15{height:.2em;left:11.8em;top:10.6em;width:2.1em}.au2 .s16{height:.1em;left:14em;top:7.9em;width:.6em}.au2 .s17{height:2.7em;left:13.9em;top:8em;width:.8em}.au2 .s18{height:.2em;left:11.5em;top:10.4em;width:3.2em}.au2 .s19{height:.1em;left:11.4em;top:10.3em;width:3.4em}.au2 .s20{height:2.2em;left:10.9em;top:8.1em;width:4em} .au3 .s1{height:1em;left:6.8em;top:.9em;width:2.7em}.au3 .s2{height:.5em;left:6.6em;top:1.9em;width:2.9em}.au3 .s3{height:.4em;left:6.5em;top:2.4em;width:3.1em}.au3 .s4{height:4.1em;left:6.5em;top:2.8em;width:3.4em} .au4 .s1{height:1.6em;left:15.1em;top:6.2em;width:.5em}.au4 .s2{height:1.9em;left:15em;top:6em;width:.1em}.au4 .s3{height:2.2em;left:14.7em;top:5.9em;width:.3em}.au4 .s4{height:2.3em;left:14.6em;top:5.7em;width:.2em}.au4 .s5{height:2.7em;left:14.2em;top:5.2em;width:.4em}.au4 .s6{height:3.1em;left:14em;top:4.8em;width:.2em}.au4 .s7{height:3.6em;left:13.9em;top:4.4em;width:.1em}.au4 .s8{height:3.8em;left:13.6em;top:4.3em;width:.3em}.au4 .s9{height:4em;left:13.3em;top:4.1em;width:.3em}.au4 .s10{height:4.2em;left:10.9em;top:3.9em;width:2.4em}.au4 .s11{height:.2em;left:11.3em;top:.6em;width:.2em}.au4 .s12{height:1.3em;left:11em;top:.8em;width:1em}.au4 .s13{height:.8em;left:11em;top:2.1em;width:1.7em}.au4 .s14{height:4em;left:9.9em;top:2.9em;width:3.1em} .au5 .s1{height:.5em;left:9.2em;top:10.8em;width:1.2em}.au5 .s2{height:.5em;left:8.7em;top:10.3em;width:1.7em}.au5 .s3{height:.4em;left:8.5em;top:9.9em;width:1.9em}.au5 .s4{height:.4em;left:8.2em;top:9.5em;width:2.2em}.au5 .s5{height:.2em;left:7.5em;top:9.3em;width:2.9em}.au5 .s6{height:2.9em;left:10.4em;top:9.3em;width:.5em}.au5 .s7{height:2.4em;left:6.5em;top:6.9em;width:4.4em} .au6 .s1{height:.4em;left:12.5em;top:14.5em;width:1.1em}.au6 .s2{height:.4em;left:12.4em;top:14.1em;width:1.3em}.au6 .s3{height:1em;left:12.2em;top:13.1em;width:1.6em}.au6 .s4{height:.6em;left:13.4em;top:12.8em;width:.4em}.au6 .s5{height:.4em;left:11.9em;top:12.8em;width:.4em} .au7 .s1{height:1.8em;left:11.5em;top:10.6em;width:.3em}.au7 .s2{height:.2em;left:14.1em;top:11.8em;width:.2em}.au7 .s3{height:.4em;left:13.9em;top:11.7em;width:.2em}.au7 .s4{height:.5em;left:13.6em;top:11.6em;width:.3em}.au7 .s5{height:.7em;left:13.5em;top:11.4em;width:.1em}.au7 .s6{height:.2em;left:12.7em;top:12.5em;width:.4em}.au7 .s7{height:.1em;left:13.3em;top:11.1em;width:.2em}.au7 .s8{height:.1em;left:12.4em;top:11.1em;width:.3em}.au7 .s9{height:1.3em;left:12.2em;top:11.2em;width:1.3em}.au7 .s10{height:1.5em;left:12.1em;top:11em;width:.1em}.au7 .s11{height:1.6em;left:11.9em;top:10.9em;width:.2em}.au7 .s12{height:1.7em;left:11.6em;top:10.8em;width:.3em}.au7 .s13{height:2em;left:11em;top:10.4em;width:.5em}.au7 .s14{height:1.9em;left:10.9em;top:10.3em;width:.5em} .au8 .s1{height:.8em;left:.9em;top:7.4em;width:.4em}.au8 .s2{height:2.4em;left:.6em;top:5em;width:.7em}.au8 .s3{height:5.6em;left:1.3em;top:4.9em;width:.2em}.au8 .s4{height:6.2em;left:1.5em;top:4.6em;width:.4em}.au8 .s5{height:6.3em;left:1.9em;top:4.5em;width:.9em}.au8 .s6{height:6.2em;left:2.6em;top:4.3em;width:.7em}.au8 .s7{height:6.4em;left:3.3em;top:4em;width:.4em}.au8 .s8{height:6.7em;left:3.7em;top:3.7em;width:1.2em}.au8 .s9{height:6.7em;left:3.9em;top:3.1em;width:1.5em}.au8 .s10{height:6.7em;left:4.2em;top:2.9em;width:2.1em}.au8 .s11{height:.4em;left:5em;top:2em;width:1.3em}.au8 .s12{height:7em;left:4.8em;top:2.4em;width:1.7em}
+
+/* size: 340 */
+.m340{width:340px} .m340 .australia,.m340 .australia .bg,.m340 .australia-cities{background:transparent url('au-340.png') no-repeat -1030px 0} .m340 .australia,.m340 .australia-cities{height:325px;width:340px} .m340 .australia{background-position:0 -308px} .m340 .australia-cities{background-position:-350px -308px} .m340 .australia .m{margin:10005px 0 0 7px} .m340 .australia .m span{font-size:20px !important}
+.m340 .au1.focus .bg,.m340 .au1.active-region .bg{height:10px;left:271px;top:209px;width:8px}.m340 .au1.focus .bg{background-position:-181px -28px}.m340 .au1.active-region .bg{background-position:-701px -28px} .m340 .au2.focus .bg,.m340 .au2.active-region .bg{height:82px;left:215px;top:151px;width:93px}.m340 .au2.focus .bg{background-position:-294px -10px}.m340 .au2.active-region .bg{background-position:-814px -10px} .m340 .au3.focus .bg,.m340 .au3.active-region .bg{height:117px;left:128px;top:16px;width:67px}.m340 .au3.focus .bg{background-position:-418px -110px}.m340 .au3.active-region .bg{background-position:-938px -110px} .m340 .au4.focus .bg,.m340 .au4.active-region .bg{height:150px;left:194px;top:10px;width:117px}.m340 .au4.focus .bg{background-position:-153px -78px}.m340 .au4.active-region .bg{background-position:-673px -78px} .m340 .au5.focus .bg,.m340 .au5.active-region .bg{height:105px;left:128px;top:133px;width:89px}.m340 .au5.focus .bg{background-position:-297px -123px}.m340 .au5.active-region .bg{background-position:-817px -123px} .m340 .au6.focus .bg,.m340 .au6.active-region .bg{height:40px;left:236px;top:252px;width:35px}.m340 .au6.focus .bg{background-position:-229px -8px}.m340 .au6.active-region .bg{background-position:-749px -8px} .m340 .au7.focus .bg,.m340 .au7.active-region .bg{height:49px;left:215px;top:200px;width:67px}.m340 .au7.focus .bg{background-position:-417px -33px}.m340 .au7.active-region .bg{background-position:-937px -33px} .m340 .au8.focus .bg,.m340 .au8.active-region .bg{height:174px;left:10px;top:37px;width:119px}.m340 .au8.focus .bg{background-position:-5px -53px}.m340 .au8.active-region .bg{background-position:-525px -53px}
+.m340 .au1 a{left:284px;top:225px} .m340 .au1 a.tooltip-right .tooltip-arrow{right:56px} .m340 .au2 a{left:270px;top:202px} .m340 .au2 a.tooltip-right .tooltip-arrow{right:70px} .m340 .au3 a{left:171px;top:90px} .m340 .au3 a.tooltip-left .tooltip-arrow{left:171px} .m340 .au4 a{left:262px;top:114px} .m340 .au4 a.tooltip-right .tooltip-arrow{right:78px} .m340 .au5 a{left:182px;top:180px} .m340 .au6 a.tooltip-right .tooltip-arrow{right:158px} .m340 .au6 a{left:267px;top:285px} .m340 .au6 a.tooltip-right .tooltip-arrow{right:73px} .m340 .au7 a{left:258px;top:240px} .m340 .au7 a.tooltip-right .tooltip-arrow{right:82px} .m340 .au8 a{left:82px;top:140px} .m340 .au8 a.tooltip-left .tooltip-arrow{left:82px}
+
+/* size: 500 */
+.m500{width:500px} .m500 .australia,.m500 .australia .bg,.m500 .australia-cities{background:transparent url('au-500.png') no-repeat -720px 0} .m500 .australia,.m500 .australia-cities{height:475px;width:500px} .m500 .australia{background-position:0 -860px} .m500 .australia-cities{background-position:0 -1355px} .m500 .australia .m{margin:10004px 0 0 6px} .m500 .australia .m span{font-size:30px !important}
+.m500 .au1.focus .bg,.m500 .au1.active-region .bg{height:15px;left:407px;top:313px;width:12px}.m500 .au1.focus .bg{background-position:-264px -58px}.m500 .au1.active-region .bg{background-position:-264px -438px} .m500 .au2.focus .bg,.m500 .au2.active-region .bg{height:123px;left:324px;top:227px;width:140px}.m500 .au2.focus .bg{background-position:-418px -20px}.m500 .au2.active-region .bg{background-position:-418px -400px} .m500 .au3.focus .bg,.m500 .au3.active-region .bg{height:176px;left:192px;top:25px;width:100px}.m500 .au3.focus .bg{background-position:-581px -173px}.m500 .au3.active-region .bg{background-position:-581px -553px} .m500 .au4.focus .bg,.m500 .au4.active-region .bg{height:226px;left:291px;top:15px;width:175px}.m500 .au4.focus .bg{background-position:-217px -123px}.m500 .au4.active-region .bg{background-position:-217px -503px} .m500 .au5.focus .bg,.m500 .au5.active-region .bg{height:158px;left:192px;top:200px;width:133px}.m500 .au5.focus .bg{background-position:-419px -190px}.m500 .au5.active-region .bg{background-position:-419px -570px} .m500 .au6.focus .bg,.m500 .au6.active-region .bg{height:60px;left:355px;top:379px;width:52px}.m500 .au6.focus .bg{background-position:-326px -23px}.m500 .au6.active-region .bg{background-position:-326px -403px} .m500 .au7.focus .bg,.m500 .au7.active-region .bg{height:73px;left:324px;top:300px;width:100px}.m500 .au7.focus .bg{background-position:-588px -60px}.m500 .au7.active-region .bg{background-position:-588px -440px} .m500 .au8.focus .bg,.m500 .au8.active-region .bg{height:262px;left:15px;top:56px;width:178px}.m500 .au8.focus .bg{background-position:-10px -86px}.m500 .au8.active-region .bg{background-position:-10px -466px}
+.m500 .au1 a{left:422px;top:332px} .m500 .au1 a.tooltip-right .tooltip-arrow{right:78px} .m500 .au2 a{left:403px;top:295px} .m500 .au2 a.tooltip-right .tooltip-arrow{right:97px} .m500 .au3 a{left:251px;top:132px} .m500 .au4 a{left:388px;top:155px} .m500 .au4 a.tooltip-right .tooltip-arrow{right:112px} .m500 .au5 a{left:268px;top:269px} .m500 .au6 a{left:396px;top:426px} .m500 .au6 a.tooltip-right .tooltip-arrow{right:104px} .m500 .au7 a{left:383px;top:351px} .m500 .au7 a.tooltip-right .tooltip-arrow{right:117px} .m500 .au8 a{left:120px;top:205px} .m500 .au8 a.tooltip-left .tooltip-arrow{left:120px}
+
+/* size: 660 */
+.m660{width:660px} .m660 .australia,.m660 .australia .bg,.m660 .australia-cities{background:transparent url('au-660.png') no-repeat -950px 0} .m660 .australia,.m660 .australia-cities{height:625px;width:660px} .m660 .australia{background-position:0 -1083px} .m660 .australia-cities{background-position:0 -1718px} .m660 .australia .m{margin:10001px 0 0 4px} .m660 .australia .m span{font-size:40px !important}
+.m660 .au1.focus .bg,.m660 .au1.active-region .bg{height:19px;left:542px;top:417px;width:16px}.m660 .au1.focus .bg{background-position:-285px -98px}.m660 .au1.active-region .bg{background-position:-285px -598px} .m660 .au2.focus .bg,.m660 .au2.active-region .bg{height:164px;left:430px;top:302px;width:186px}.m660 .au2.focus .bg{background-position:-552px -20px}.m660 .au2.active-region .bg{background-position:-552px -520px} .m660 .au3.focus .bg,.m660 .au3.active-region .bg{height:233px;left:255px;top:33px;width:132px}.m660 .au3.focus .bg{background-position:-770px -223px}.m660 .au3.active-region .bg{background-position:-770px -723px} .m660 .au4.focus .bg,.m660 .au4.active-region .bg{height:300px;left:387px;top:20px;width:232px}.m660 .au4.focus .bg{background-position:-285px -157px}.m660 .au4.active-region .bg{background-position:-285px -657px} .m660 .au5.focus .bg,.m660 .au5.active-region .bg{height:210px;left:255px;top:266px;width:176px}.m660 .au5.focus .bg{background-position:-554px -246px}.m660 .au5.active-region .bg{background-position:-554px -746px} .m660 .au6.focus .bg,.m660 .au6.active-region .bg{height:80px;left:472px;top:504px;width:69px}.m660 .au6.focus .bg{background-position:-426px -47px}.m660 .au6.active-region .bg{background-position:-426px -547px} .m660 .au7.focus .bg,.m660 .au7.active-region .bg{height:96px;left:430px;top:399px;width:132px}.m660 .au7.focus .bg{background-position:-777px -87px}.m660 .au7.active-region .bg{background-position:-777px -587px} .m660 .au8.focus .bg,.m660 .au8.active-region .bg{height:348px;left:20px;top:75px;width:236px}.m660 .au8.focus .bg{background-position:-10px -109px}.m660 .au8.active-region .bg{background-position:-10px -609px}
+.m660 .au1 a{left:558px;top:438px} .m660 .au1 a.tooltip-right .tooltip-arrow{right:102px} .m660 .au2 a{left:533px;top:388px} .m660 .au2 a.tooltip-right .tooltip-arrow{right:127px} .m660 .au3 a{left:331px;top:170px} .m660 .au4 a{left:513px;top:215px} .m660 .au4 a.tooltip-right .tooltip-arrow{right:147px} .m660 .au5 a{left:353px;top:351px} .m660 .au6 a{left:523px;top:563px} .m660 .au6 a.tooltip-right .tooltip-arrow{right:137px} .m660 .au7 a{left:506px;top:467px} .m660 .au7 a.tooltip-right .tooltip-arrow{right:154px} .m660 .au8 a{left:157px;top:258px} .m660 .au8 a.tooltip-left .tooltip-arrow{left:157px}
+
+/* size: 810 */
+.m810{width:810px} .m810 .australia,.m810 .australia .bg,.m810 .australia-cities{background:transparent url('au-810.png') no-repeat -1150px 0} .m810 .australia,.m810 .australia-cities{height:770px;width:810px} .m810 .australia{background-position:0 -1232px} .m810 .australia-cities{background-position:0 -2012px} .m810 .australia .m{margin:9997px 0 0 0} .m810 .australia .m span{font-size:50px !important}
+.m810 .au1.focus .bg,.m810 .au1.active-region .bg{height:24px;left:677px;top:520px;width:21px}.m810 .au1.focus .bg{background-position:-347px -93px}.m810 .au1.active-region .bg{background-position:-347px -663px}.m810 .au2.focus .bg,.m810 .au2.active-region .bg{height:206px;left:537px;top:375px;width:234px}.m810 .au2.focus .bg{background-position:-673px -25px}.m810 .au2.active-region .bg{background-position:-673px -595px}.m810 .au3.focus .bg,.m810 .au3.active-region .bg{height:294px;left:316px;top:37px;width:166px}.m810 .au3.focus .bg{background-position:-946px -242px}.m810 .au3.active-region .bg{background-position:-946px -812px}.m810 .au4.focus .bg,.m810 .au4.active-region .bg{height:377px;left:482px;top:20px;width:292px}.m810 .au4.focus .bg{background-position:-347px -158px}.m810 .au4.active-region .bg{background-position:-347px -728px}.m810 .au5.focus .bg,.m810 .au5.active-region .bg{height:264px;left:316px;top:330px;width:222px}.m810 .au5.focus .bg{background-position:-672px -271px}.m810 .au5.active-region .bg{background-position:-672px -841px}.m810 .au6.focus .bg,.m810 .au6.active-region .bg{height:101px;left:589px;top:629px;width:86px}.m810 .au6.focus .bg{background-position:-547px -17px}.m810 .au6.active-region .bg{background-position:-547px -587px}.m810 .au7.focus .bg,.m810 .au7.active-region .bg{height:121px;left:537px;top:498px;width:166px}.m810 .au7.focus .bg{background-position:-946px -81px}.m810 .au7.active-region .bg{background-position:-946px -651px}.m810 .au8.focus .bg,.m810 .au8.active-region .bg{height:437px;left:20px;top:89px;width:297px}.m810 .au8.focus .bg{background-position:-10px -98px}.m810 .au8.active-region .bg{background-position:-10px -668px}
+.m810 .au1 a{left:695px;top:545px} .m810 .au1 a.tooltip-right .tooltip-arrow{right:115px} .m810 .au2 a{left:663px;top:487px} .m810 .au2 a.tooltip-right .tooltip-arrow{right:147px} .m810 .au3 a{left:409px;top:193px} .m810 .au4 a{left:635px;top:260px} .m810 .au4 a.tooltip-right .tooltip-arrow{right:175px} .m810 .au5 a{left:437px;top:430px} .m810 .au6 a{left:650px;top:689px} .m810 .au6 a.tooltip-right .tooltip-arrow{right:160px} .m810 .au7 a{left:625px;top:575px} .m810 .au8 a{left:185px;top:330px} .m810 .au8 a.tooltip-left .tooltip-arrow{left:185px}
+
+/* --------------------------------------------------------
+end of the maps */
