@@ -6,25 +6,47 @@ html(lang="en")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css")
     link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css")
-    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Roboto")
+    link(rel="stylesheet", href="//fonts.googleapis.com/css?family=Open+Sans")
     link(rel="stylesheet", href="/styles/style.css")
+    link(rel="stylesheet", type="text/css" media="screen,projection" href="styles/cssmap-australia.css")
     title Taiji Cloud
   body
     #nav-wrapper
-      img#main-logo(src='/images/big-logo.png')
+      a(href='/')
+        img#main-logo(src='/images/big-logo.png')
       ul#nav
         li: a(href="#map")
-          i.fa.fa-fw.fa-map-marker
-          span MAP
+          span.fa-stack
+            i.fa.fa-circle.fa-stack-2x
+            i.fa.fa-map-marker.fa-stack-1x.fa-inverse
+          span.nav-item MAP
         li: a(href="#categories")
-          i.fa.fa-fw.fa-tags
-          span CATEGORIES
+          span.fa-stack
+            i.fa.fa-circle.fa-stack-2x
+            i.fa.fa-tags.fa-stack-1x.fa-inverse
+          span.nav-item CATEGORIES
         li: a(href="#about")
-          i.fa.fa-fw.fa-info
-          span ABOUT
+          span.fa-stack
+            i.fa.fa-circle.fa-stack-2x
+            i.fa.fa-info.fa-stack-1x.fa-inverse
+          span.nav-item ABOUT
     #main-wrapper
+      #australia-tagline
+        span Click on your state below to search for local Taiji locations
+      #australia-map
+        ul.australia
+          li.au1: a(href="#canberra") Canberra
+          li.au2: a(href="#new-south-wales") New South Wales
+          li.au3: a(href="#northern-territory") Northern Territory
+          li.au4: a(href="#queensland") Queensland
+          li.au5: a(href="#south-australia") South Australia
+          li.au6: a(href="#tasmania") Tasmania
+          li.au7: a(href="#victoria") Victoria
+          li.au8: a(href="#western-australia") Western Australia
       #treeline-wrapper
         img#treeline(src='/images/treeline.png')
 
     script(src="//code.jquery.com/jquery-2.1.1.min.js")
     script(src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js")
+    script(src="//cssmapsplugin.com/4/jquery.cssmap.js")
+    script(src="/scripts/main.js")

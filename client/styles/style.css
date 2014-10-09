@@ -19,6 +19,7 @@ html, body {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #nav span {
@@ -28,11 +29,9 @@ html, body {
 #nav a {
   display: block;
   width: 100%;
-  padding: 0.2em 1em;
-  font-size: 1.5em;
-  font-family: 'Roboto', sans-serif;
+  padding: 1em 0.6em;
+  font-size: 1.2em;
   background-color: #40C0CB;
-  color: White;
   text-decoration: none;
   float: left;
   margin-top: 1px;
@@ -41,7 +40,11 @@ html, body {
 #nav a:hover
 {
   background-color: #369;
-  color: #fff;
+  text-color: White;
+}
+
+#nav span.nav-item {
+  color: White;
 }
 
 #main-wrapper {
@@ -50,6 +53,13 @@ html, body {
   margin-left: 300px;
   position: relative;
   box-shadow:inset 2px 5px 20px #555;
+}
+
+#australia-tagline {
+  font-size: 2em;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding-top: 20px;
 }
 
 #treeline-wrapper {
