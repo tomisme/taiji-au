@@ -14,22 +14,27 @@ $(document).ready(function() {
 
     var html = '';
     html += "<ul class='list-group'>";
-    html += "<li class='list-group-item'><i class='fa fa-map-marker fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-name'>" + loc.name + "</a></li>";
-    html += "<li class='list-group-item'><i class='fa fa-phone fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-phone'>" + loc.phone + "</a></li>";
-    html += "<li class='list-group-item'><i class='fa fa-mobile fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-mobile'>" + loc.mobile + "</a></li>";
-    html += "<li class='list-group-item'><i class='fa fa-envelope fa-fw'></i>&nbsp;&nbsp;<a href='mailto:" + loc.email + "' id='edit-email'>" + loc.email + "</a></li>";
-    html += "<li class='list-group-item'><i class='fa fa-globe fa-fw'></i>&nbsp;&nbsp;<a href='" + loc.website + "' id='edit-website'>" + loc.website + "</a></li>"; 
-    html += "<li class='list-group-item'><i class='fa fa-facebook fa-fw'></i>&nbsp;&nbsp;<a href='" + loc.facebook + "' id='edit-facebook'>" + loc.facebook + "</a></li>"; 
-    html += "<li class='list-group-item'><i class='fa fa-twitter fa-fw'></i>&nbsp;&nbsp;<a href='" + loc.twitter + "' id='edit-twitter'>" + loc.twitter + "</a></li>"; 
+    html += "<li class='list-group-item'><i class='fa fa-map-marker fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-name'>" + (loc.name ? loc.name : "") + "</a></li>";
+    html += "<li class='list-group-item'><i class='fa fa-phone fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-phone'>" + (loc.phone ? loc.phone : "") + "</a></li>";
+    html += "<li class='list-group-item'><i class='fa fa-mobile fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-mobile'>" + (loc.mobile ? loc.mobile : "") + "</a></li>";
+    html += "<li class='list-group-item'><i class='fa fa-envelope fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-email'>" + (loc.email ? loc.email : "") + "</a></li>";
+    html += "<li class='list-group-item'><i class='fa fa-globe fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-website'>" + (loc.website ? loc.website : "") + "</a></li>"; 
+    html += "<li class='list-group-item'><i class='fa fa-facebook fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-facebook'>" + (loc.facebook ? loc.facebook : "") + "</a></li>"; 
+    html += "<li class='list-group-item'><i class='fa fa-twitter fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-twitter'>" + (loc.twitter ? loc.twitter : "") + "</a></li>"; 
+    html += "<li class='list-group-item'><i class='fa fa-youtube fa-fw'></i>&nbsp;&nbsp;<a href='#' id='edit-youtube'>" + (loc.youtube ? loc.youtube : "")  + "</a></li>"; 
     html += "<li class='list-group-item'>"; 
     html += "<h4 class='list-group-item-heading'>Address</h4>";
-    html += "<p class='list-group-item-text'>" + loc.streetNumber + " " + loc.streetName + "</p>";
-    html += "<p class='list-group-item-text'>" + loc.city + "</p>";
-    html += "<p class='list-group-item-text'>" + loc.stateCode + ", " + loc.zipcode +  "</p>";
+    html += "<p class='list-group-item-text'>" + (loc.streetNumber ? loc.streetNumber : "") + " " + (loc.streetName ? loc.streetName : "") + "</p>";
+    html += "<p class='list-group-item-text'>" + (loc.city ? loc.city : "") + "</p>";
+    html += "<p class='list-group-item-text'>" + (loc.stateCode ? loc.stateCode : "") + (loc.zipcode ? ", " + loc.zipcode : "") +  "</p>";
     html += "</li>";
     html += "<li class='list-group-item'>"; 
     html += "<h4 class='list-group-item-heading'>Categories</h4>";
     html += "<p class='list-group-item-text'><a href='#' id='edit-categories'></a></p>";
+    html += "</li>";
+    html += "<li class='list-group-item'>"; 
+    html += "<h4 class='list-group-item-heading'>Private Notes</h4>";
+    html += "<p class='list-group-item-text'><a href='#' id='edit-notes'>" + (loc.notes ? loc.notes : "") + "</a></p>";
     html += "</li>";
     html += "<li class='list-group-item'>"; 
     html += "<div class='btn-group'>";
@@ -110,6 +115,22 @@ $(document).ready(function() {
       pk: loc._id,
       url: '/api/locations/update',
       title: 'Enter Twitter:'
+    });
+
+    $('#edit-youtube').editable({
+      name: 'youtube',
+      type: 'text',
+      pk: loc._id,
+      url: '/api/locations/update',
+      title: 'Enter Youtube video url:'
+    });
+
+    $('#edit-notes').editable({
+      name: 'notes',
+      type: 'textarea',
+      pk: loc._id,
+      url: '/api/locations/update',
+      title: 'Enter private notes:'
     });
 
     $('.delete-loc').click(function(e) {
