@@ -1,8 +1,8 @@
 'use strict';
 
-var express    = require('express');
-var morgan     = require('morgan');
-var bunyan     = require('bunyan');
+var express = require('express');
+var morgan = require('morgan');
+var bunyan = require('bunyan');
 
 var log = bunyan.createLogger({ name: 'taiji' });
 var port = process.env.PORT || 3000;
@@ -15,6 +15,8 @@ app.set('view engine', 'jade');
 app.use(morgan('dev'));
 
 app.use(express.static(__dirname + '/client'));
+
+app.use('/react', express.static(__dirname + '/public'));
 
 var router = require('./router')(app);
 

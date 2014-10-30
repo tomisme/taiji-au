@@ -1,0 +1,13 @@
+.map {
+  height: 500px;
+}
+
+.mapInfo {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  height: 400px;
+  width: 350px;
+  background: white;
+  z-index: 1;
+}
